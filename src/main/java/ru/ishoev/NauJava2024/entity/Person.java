@@ -9,17 +9,30 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "regions")
-public class Region {
+@Table(name = "persons")
+public class Person {
     @Id
     @GeneratedValue
     private Long id;
     @Column
     private String name;
-    @ManyToOne
+    @Column
+    private String surname;
+    @Column
+    private String patronymic;
+    @Column
+    private String gender;
+    @OneToOne
     @JoinColumn(name = "country_id")
     private Country country;
     @OneToMany(mappedBy = "id")
-    private List<PhoneFormat> phoneFormats;
-}
+    private List<PhoneNumber> phoneNumbers;
 
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public Person() {
+
+    }
+}

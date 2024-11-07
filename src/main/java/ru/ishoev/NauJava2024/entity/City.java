@@ -4,13 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @Entity
-@Table(name = "regions")
-public class Region {
+@Table(name = "cities")
+public class City {
     @Id
     @GeneratedValue
     private Long id;
@@ -19,7 +17,16 @@ public class Region {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
-    @OneToMany(mappedBy = "id")
-    private List<PhoneFormat> phoneFormats;
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
+
+    public City(String name) {
+        this.name = name;
+    }
+
+    public City() {
+
+    }
 }
 
