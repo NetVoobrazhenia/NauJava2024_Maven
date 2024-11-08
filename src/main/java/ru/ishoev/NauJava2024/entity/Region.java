@@ -21,5 +21,13 @@ public class Region {
     private Country country;
     @OneToMany(mappedBy = "id")
     private List<PhoneFormat> phoneFormats;
+
+    public Region(String name) {
+        this.name = name;
+    }
+
+    public Region() {
+
+    }
 }
 
